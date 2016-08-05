@@ -5,6 +5,9 @@
     window.dismissPopupAndReload = function (win) {
         document.location.reload();
         win.close();
+        
+        // Django JET
+        if(django.jQuery.isFunction(closeRelatedPopup)) closeRelatedPopup(win);
     };
     window.dismissRelatedImageLookupPopup = function (win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt) {
         var id = window.windowname_to_id(win.name);
@@ -29,6 +32,9 @@
             element.trigger('change');
         }
         win.close();
+        
+        // Django JET
+        if(django.jQuery.isFunction(closeRelatedPopup)) closeRelatedPopup(win);
     };
     window.dismissRelatedFolderLookupPopup = function (win, chosenId, chosenName) {
         var id = window.windowname_to_id(win.name);
@@ -42,5 +48,8 @@
         clearButton.removeClass('hidden');
         addFolderButton.addClass('hidden');
         win.close();
+        
+    	// Django JET
+        if(django.jQuery.isFunction(closeRelatedPopup)) closeRelatedPopup(win);
     };
 })(django.jQuery);
