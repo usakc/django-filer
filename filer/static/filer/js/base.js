@@ -99,6 +99,20 @@ Cl.mediator = new Mediator();
 
             });
         }());
+        
+        // Django JET
+        // fix hidden checkbox in Django JET
+        if(django.jQuery.isFunction(closeRelatedPopup)) { // closeRelatedPopup is only defined in Django JET
+			(function () {
+        		$('td.column-checkbox').add(".action-checkbox-column");
+           		var $checkboxes = $('td.column-checkbox input[type="checkbox"]');
+
+            	$checkboxes.each(function() {
+					$(this).attr('id', $(this).attr('id') ? $(this).attr('id') : $(this).val()+"-checkbox");
+            		$('<label>').attr('for', $(this).attr('id')).insertAfter($(this));
+                });
+			}());
+		}
 
         (function () {
             var actionsMenu = $('.js-actions-menu');
@@ -162,9 +176,6 @@ Cl.mediator = new Mediator();
                     e.stopPropagation();
                 }
             });
-            
-            // Django JET
-            $('input[type="checkbox"]').show();
         }());
 
         // breaks header if breadcrumbs name reaches a width of 80px
