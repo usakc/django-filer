@@ -162,6 +162,9 @@ Cl.mediator = new Mediator();
                     e.stopPropagation();
                 }
             });
+            
+            // Django JET
+            $('input[type="checkbox"]').show();
         }());
 
         // breaks header if breadcrumbs name reaches a width of 80px
